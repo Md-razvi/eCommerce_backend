@@ -15,11 +15,13 @@ public class Product {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long productId;
-
+    private String productName;
     private String description;
     private Integer quantity;
-    private double price;
-    private double specialPrice;
+    private Double price;
+    private Double specialPrice;
+    private String productImage;
+    private Double discount;
 
     @ManyToOne
     @JoinColumn(name="category_id")
