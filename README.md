@@ -1,4 +1,4 @@
-#Ecommerce Project:
+# Ecommerce Project:
 
 This project is a simple backend application built for an e-commerce system.
 It is developed using Spring Boot and connected to a PostgreSQL database.
@@ -8,11 +8,11 @@ The application allows adding and retrieving products and categories through RES
 
 This project helped me understand how backend systems work, including database integration and API development using Spring Boot.
 
-##Category RESTFULENdpoints
-###GET: http://localhost:8080/api/public/categories
-###POST:http://localhost:8080/api/admin/createCategories
-###PUT:http://localhost:8080/api/admin/deleteCategory/{category_Id}
-###DELETE:http://localhost:8080/api/admin/updateCategory/{category_Id}
+## Category RESTFULENdpoints
+### GET: http://localhost:8080/api/public/categories
+### POST:http://localhost:8080/api/admin/createCategories
+### PUT:http://localhost:8080/api/admin/deleteCategory/{category_Id}
+### DELETE:http://localhost:8080/api/admin/updateCategory/{category_Id}
 
 
 
