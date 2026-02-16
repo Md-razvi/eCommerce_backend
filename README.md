@@ -8,11 +8,17 @@ The application allows adding and retrieving products and categories through RES
 
 This project helped me understand how backend systems work, including database integration and API development using Spring Boot.
 
-## Category RESTFULENdpoints
-### GET: http://localhost:8080/api/public/categories
+## Category RESTFULL Endpoints
+### GET ALL Categories : http://localhost:8080/api/public/categories
+### GET By Id :
 ### POST:http://localhost:8080/api/admin/createCategories
 ### PUT:http://localhost:8080/api/admin/deleteCategory/{category_Id}
 ### DELETE:http://localhost:8080/api/admin/updateCategory/{category_Id}
+## Products RESTFULL Endpoints
+### GET:
+### POST:
+### PUT:
+###DELETE:
 
 
 
