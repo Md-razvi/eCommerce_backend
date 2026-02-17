@@ -9,6 +9,7 @@ import com.e_commerce.project.repositories.CategoriesRepository;
 import com.e_commerce.project.repositories.ProductRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import com.e_commerce.project.config.MapperMethods;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,9 +26,12 @@ public class ProductServiceImp implements ProductService{
 
     private CategoriesRepository categoryRepository;
     private ProductRepository productRepository;
-
+    @Autowired
+    private FileService fileService;
     @Autowired
     private ModelMapper modelMapper;
+    @Value("${project.image}")
+    private String path;
     @Autowired
     public void setProductRepo(CategoriesRepository categoryRepository,
                                ProductRepository productRepository){
@@ -111,26 +115,13 @@ public class ProductServiceImp implements ProductService{
         //Get Product from Db
         Product product=productRepository.findById(productId).
                 orElseThrow(()->new ResourceNotFound("Product","productId",productId));
-        String path="image/";
-        String filename=uploadImage(path,image);
+        String path="images/";
+        String filename=fileService.uploadImage(path,image);
         product.setProductImage(filename);
         Product Updatedproduct=productRepository.save(product);
         return  modelMapper.map(Updatedproduct,ProductDTO.class);
 
     }
 
-    private String uploadImage(String path, MultipartFile file) throws IOException {
-        String orginalFileName= file.getOriginalFilename();
-        String randomID= UUID.randomUUID().toString();
-        String fileName=randomID.concat(orginalFileName.substring(orginalFileName.lastIndexOf(".")));
-        String filePath=path+ File.separator+fileName;
-        File folder=new File(path);
-        if(!folder.exists()){
-            folder.mkdir();
-        }
-        Files.copy(file.getInputStream(), Paths.get(filePath));
-        return fileName;
 
-
-    }
 }
