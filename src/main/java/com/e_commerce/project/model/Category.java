@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name="categories")
 @Data
@@ -19,6 +21,8 @@ public class Category {
     @NotBlank(message = "Fields cannot be empty")
     @Size(min=5 , message = "the word should be at least 5 characters")
     private String categoryName;
+    @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
+    private List<Product> productList;
 
 
 }
